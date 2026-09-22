@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primrose dessert — Desserts, jus &amp; apéro faits maison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF3EE;
+    --cream-deep: #F3E5DC;
+    --plum: #452339;
+    --plum-soft: #6B3652;
+    --pink: #E7A7BA;
+    --pink-pale: #F6DCE3;
+    --pink-deep: #C96F8C;
+    --gold: #E3A94A;
+    --gold-pale: #F3D9A8;
+    --sage: #8B9A6E;
+    --sage-pale: #E3E9D6;
+    --line: rgba(69,35,57,0.14);
+    --radius: 4px;
+    --wa: #25D366;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--plum);
+    font-weight:500;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 28px;}
+  .flower-float{position:absolute; opacity:0.55; pointer-events:none; animation: float 7s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-14px) rotate(4deg);}}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ============ HEADER ============ */
+  header{position:sticky; top:0; z-index:60; background:rgba(251,243,238,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1140px; margin:0 auto; gap:20px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Parisienne', cursive; font-size:27px; color:var(--pink-deep); white-space:nowrap;}
+  .brand svg{width:32px; height:32px; flex-shrink:0;}
+  .nav-links{display:flex; gap:28px; font-size:15px;}
+  .nav-links a{text-decoration:none; color:var(--plum-soft); transition:color .2s;}
+  .nav-links a:hover{color:var(--pink-deep);}
+  .nav-right{display:flex; align-items:center; gap:12px;}
+  .cart-btn{position:relative; display:flex; align-items:center; gap:8px; background:var(--cream-deep); border:1px solid var(--line); color:var(--plum); padding:9px 16px; border-radius:var(--radius); cursor:pointer; font-size:14px;}
+  .cart-btn:hover{border-color:var(--pink-deep);}
+  .cart-btn svg{width:17px; height:17px;}
+  .cart-count{position:absolute; top:-7px; right:-7px; background:var(--pink-deep); color:#fff; font-size:11px; min-width:18px; height:18px; border-radius:9px; display:flex; align-items:center; justify-content:center; padding:0 4px;}
+  .nav-wa{display:flex; align-items:center; gap:8px; background:var(--plum); color:var(--cream); padding:10px 18px; border-radius:var(--radius); text-decoration:none; font-size:14px; transition:background .2s;}
+  .nav-wa:hover{background:var(--pink-deep);}
+  .nav-wa svg{width:15px; height:15px; fill:var(--cream);}
+
+  /* ============ HERO ============ */
+  .hero{position:relative; padding:80px 28px 0; overflow:hidden; text-align:center;}
+  .hero-eyebrow{font-size:14px; color:var(--sage); font-style:italic; margin-bottom:16px; font-family:'Fraunces', serif;}
+  .hero h1{font-size:clamp(38px, 5.6vw, 60px); line-height:1.1; max-width:760px; margin:0 auto;}
+  .hero h1 em{font-style:italic; font-family:'Parisienne', cursive; font-size:1.22em; color:var(--pink-deep); font-weight:400;}
+  .hero p.lede{max-width:540px; margin:24px auto 0; font-size:17px; color:var(--plum-soft);}
+  .hero-cta{margin-top:34px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn{padding:14px 28px; border-radius:var(--radius); font-size:15px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, background .2s ease, border-color .2s ease; font-weight:500;}
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--pink-deep); color:var(--cream);}
+  .btn-primary:hover{background:var(--plum);}
+  .btn-ghost{background:transparent; color:var(--plum); border-color:var(--plum);}
+  .btn-ghost:hover{border-color:var(--pink-deep); color:var(--pink-deep);}
+
+  /* trust stats */
+  .stats-bar{max-width:820px; margin:56px auto 0; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0;}
+  .stats-bar .stat{text-align:center; padding:0 10px; border-right:1px solid var(--line);}
+  .stats-bar .stat:last-child{border-right:none;}
+  .stats-bar .stat .n{font-family:'Fraunces', serif; font-size:30px; color:var(--pink-deep);}
+  .stats-bar .stat .l{font-size:13px; color:var(--plum-soft); margin-top:4px;}
+
+  section{padding:76px 0;}
+  .section-title{text-align:center; max-width:600px; margin:0 auto 44px;}
+  .section-title .eyebrow{font-family:'Fraunces', serif; font-style:italic; color:var(--sage); font-size:14px; margin-bottom:10px;}
+  .section-title h2{font-size:clamp(28px,4vw,38px);}
+  .section-title p{color:var(--plum-soft); margin-top:12px; font-size:16px;}
+  .divider{width:52px; height:2px; background:var(--gold); margin:18px auto 0;}
+
+  /* ============ CATALOG ============ */
+  .catalog{background:var(--cream-deep);}
+  .cat-tabs{display:flex; justify-content:center; gap:10px; margin-bottom:40px; flex-wrap:wrap;}
+  .cat-tab{padding:10px 22px; border-radius:22px; border:1px solid var(--line); background:var(--cream); color:var(--plum-soft); font-size:14px; cursor:pointer; transition:all .2s;}
+  .cat-tab.active{background:var(--plum); color:var(--cream); border-color:var(--plum);}
+  .cat-tab:hover:not(.active){border-color:var(--pink-deep); color:var(--pink-deep);}
+
+  .mode-bar{display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:36px; flex-wrap:wrap;}
+  .mode-toggle{display:flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--cream);}
+  .mode-toggle button{padding:10px 20px; border:none; background:transparent; font-size:14px; cursor:pointer; color:var(--plum-soft); border-right:1px solid var(--line);}
+  .mode-toggle button:last-child{border-right:none;}
+  .mode-toggle button.active{background:var(--pink-deep); color:#fff;}
+  .mode-hint{font-size:13px; color:var(--sage); font-style:italic;}
+
+  .product-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:22px;}
+  .p-card{background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:22px; display:flex; flex-direction:column; transition:border-color .2s;}
+  .p-card:hover{border-color:var(--pink-deep);}
+  .p-icon{width:100%; height:110px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
+  .p-icon svg{width:88px; height:88px;}
+  .p-name{font-size:19px; margin-bottom:6px;}
+  .p-desc{color:var(--plum-soft); font-size:13.5px; margin-bottom:16px; flex-grow:1;}
+  .p-price-row{display:flex; align-items:baseline; gap:6px; margin-bottom:4px;}
+  .p-price{font-family:'Fraunces', serif; font-size:24px; color:var(--pink-deep);}
+  .p-unit{font-size:12.5px; color:var(--plum-soft);}
+  .p-gros-note{font-size:11.5px; color:var(--sage); font-style:italic; margin-bottom:14px; min-height:16px;}
+  .p-action{margin-top:auto;}
+  .add-btn{width:100%; padding:11px; border-radius:var(--radius); border:1px solid var(--plum); background:transparent; color:var(--plum); font-size:14px; cursor:pointer; transition:all .2s;}
+  .add-btn:hover{background:var(--plum); color:var(--cream);}
+  .p-stepper{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--pink-deep); border-radius:var(--radius); overflow:hidden;}
+  .p-stepper button{flex:0 0 42px; height:40px; border:none; background:var(--pink-pale); color:var(--plum); font-size:17px; cursor:pointer;}
+  .p-stepper button:hover{background:var(--pink);}
+  .p-stepper .p-qty{flex:1; text-align:center; font-size:15px; color:var(--plum);}
+
+  /* ============ PROCESS ============ */
+  .process-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:900px; margin:0 auto;}
+  .process-step{text-align:center; padding:0 12px;}
+  .process-num{width:40px; height:40px; border-radius:50%; border:1.5px solid var(--gold); color:var(--gold); font-family:'Fraunces', serif; font-size:17px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
+  .process-step h3{font-size:18px; margin-bottom:8px;}
+  .process-step p{color:var(--plum-soft); font-size:14px;}
+
+  /* ============ WHY / DELIVERY ============ */
+  .why-section{background:var(--cream-deep);}
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .why-card{background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:26px 20px; text-align:center;}
+  .why-card svg{width:34px; height:34px; margin-bottom:14px;}
+  .why-card h3{font-size:16px; margin-bottom:8px;}
+  .why-card p{font-size:13.5px; color:var(--plum-soft);}
+
+  .delivery-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
+  .delivery-list{list-style:none; padding:0; margin:20px 0 0;}
+  .delivery-list li{display:flex; gap:12px; margin-bottom:16px; font-size:15px; color:var(--plum-soft);}
+  .delivery-list svg{width:19px; height:19px; flex-shrink:0; margin-top:2px; fill:var(--pink-deep);}
+  .delivery-visual{display:flex; justify-content:center;}
+  .delivery-visual svg{width:210px; height:210px;}
+
+  /* ============ ABOUT ============ */
+  .about{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .about-visual{display:flex; justify-content:center;}
+  .about-visual svg{width:200px; height:200px;}
+  .about h2{font-size:32px; margin-bottom:18px;}
+  .about p{color:var(--plum-soft); font-size:15.5px; margin-bottom:14px;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--plum); color:var(--cream); padding:60px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid rgba(251,243,238,0.15);}
+  .footer-brand{font-family:'Parisienne', cursive; font-size:29px; color:var(--pink); margin-bottom:12px;}
+  footer .col-title{font-size:13px; letter-spacing:0.3px; color:var(--pink); margin-bottom:15px; font-family:'Fraunces', serif; font-style:italic;}
+  footer p, footer a{color:rgba(251,243,238,0.82); font-size:14.5px; text-decoration:none; display:block; margin-bottom:9px;}
+  footer a:hover{color:var(--pink);}
+  .footer-bottom{padding-top:22px; text-align:center; font-size:13px; color:rgba(251,243,238,0.55);}
+
+  /* ============ CART DRAWER ============ */
+  .overlay{position:fixed; inset:0; background:rgba(69,35,57,0.35); z-index:90; opacity:0; pointer-events:none; transition:opacity .25s;}
+  .overlay.show{opacity:1; pointer-events:auto;}
+  .cart-drawer{position:fixed; top:0; right:0; height:100%; width:400px; max-width:92vw; background:var(--cream); z-index:100; transform:translateX(100%); transition:transform .3s ease; display:flex; flex-direction:column; box-shadow:-8px 0 30px rgba(0,0,0,0.15);}
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid var(--line);}
+  .cart-head h3{font-size:21px;}
+  .cart-close{background:none; border:none; font-size:22px; cursor:pointer; color:var(--plum-soft); line-height:1;}
+  .cart-body{flex:1; overflow-y:auto; padding:18px 24px;}
+  .cart-empty{text-align:center; color:var(--plum-soft); padding:60px 10px; font-size:14.5px;}
+  .cart-item{display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid var(--line);}
+  .cart-item-icon{width:44px; height:44px; flex-shrink:0;}
+  .cart-item-icon svg{width:100%; height:100%;}
+  .cart-item-info{flex:1;}
+  .cart-item-name{font-size:14.5px; color:var(--plum); margin-bottom:2px;}
+  .cart-item-price{font-size:12.5px; color:var(--plum-soft);}
+  .cart-item-stepper{display:flex; align-items:center; gap:8px;}
+  .cart-item-stepper button{width:26px; height:26px; border-radius:50%; border:1px solid var(--line); background:var(--cream); cursor:pointer; font-size:14px; color:var(--plum);}
+  .cart-item-stepper button:hover{border-color:var(--pink-deep); color:var(--pink-deep);}
+  .cart-foot{padding:20px 24px; border-top:1px solid var(--line);}
+  .cart-total-row{display:flex; justify-content:space-between; font-size:15px; margin-bottom:6px; color:var(--plum-soft);}
+  .cart-total-row.grand{font-size:19px; color:var(--plum); font-family:'Fraunces', serif; margin-top:8px; margin-bottom:18px;}
+  .cart-gros-note{font-size:12px; color:var(--sage); font-style:italic; margin-bottom:14px;}
+  .order-btn{width:100%; justify-content:center; background:var(--wa); color:#fff; font-size:15.5px; padding:14px 20px;}
+  .order-btn:hover{background:#1EBE5A;}
+  .order-btn svg{width:18px; height:18px; fill:#fff;}
+  .order-btn:disabled{opacity:0.45; cursor:not-allowed;}
+
+  /* ============ FLOATING BUTTONS ============ */
+  .fab-stack{position:fixed; bottom:22px; right:22px; z-index:70; display:flex; flex-direction:column; gap:12px; align-items:flex-end;}
+  .fab{width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,0.22); text-decoration:none; border:none; cursor:pointer; transition:transform .2s;}
+  .fab:hover{transform:scale(1.06);}
+  .fab.wa{background:var(--wa);}
+  .fab.wa svg{width:27px; height:27px; fill:#fff;}
+  .fab.copilot{background:var(--plum);}
+  .fab.copilot svg{width:26px; height:26px; fill:var(--cream);}
+
+  /* ============ COPILOT CHAT ============ */
+  .copilot-panel{position:fixed; bottom:92px; right:22px; width:360px; max-width:92vw; height:480px; max-height:70vh; background:var(--cream); border-radius:12px; box-shadow:0 12px 40px rgba(69,35,57,0.28); z-index:80; display:flex; flex-direction:column; overflow:hidden; opacity:0; transform:translateY(16px) scale(0.98); pointer-events:none; transition:all .22s ease; border:1px solid var(--line);}
+  .copilot-panel.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+  .copilot-head{background:var(--plum); color:var(--cream); padding:16px 18px; display:flex; align-items:center; gap:10px;}
+  .copilot-head svg{width:22px; height:22px; fill:var(--pink);}
+  .copilot-head .t1{font-family:'Fraunces', serif; font-size:15.5px;}
+  .copilot-head .t2{font-size:11.5px; color:var(--pink-pale); margin-top:1px;}
+  .copilot-close{margin-left:auto; background:none; border:none; color:var(--cream); font-size:20px; cursor:pointer; opacity:0.8;}
+  .copilot-body{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px;}
+  .msg{max-width:85%; padding:10px 13px; border-radius:12px; font-size:13.8px; line-height:1.5;}
+  .msg.bot{background:var(--pink-pale); color:var(--plum); align-self:flex-start; border-bottom-left-radius:3px;}
+  .msg.user{background:var(--plum); color:var(--cream); align-self:flex-end; border-bottom-right-radius:3px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:7px; margin-top:2px;}
+  .chip{background:var(--cream); border:1px solid var(--pink-deep); color:var(--pink-deep); font-size:12px; padding:7px 12px; border-radius:16px; cursor:pointer;}
+  .chip:hover{background:var(--pink-deep); color:#fff;}
+  .copilot-input-row{display:flex; gap:8px; padding:12px; border-top:1px solid var(--line);}
+  .copilot-input-row input{flex:1; border:1px solid var(--line); border-radius:20px; padding:10px 16px; font-family:inherit; font-size:13.5px; background:#fff; color:var(--plum);}
+  .copilot-input-row input:focus{outline:none; border-color:var(--pink-deep);}
+  .copilot-input-row button{width:38px; height:38px; border-radius:50%; border:none; background:var(--pink-deep); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .copilot-input-row button svg{width:16px; height:16px; fill:#fff;}
+
+  @media (max-width:900px){
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .stats-bar{grid-template-columns:1fr; gap:14px;}
+    .stats-bar .stat{border-right:none; border-bottom:1px solid var(--line); padding-bottom:14px;}
+    .stats-bar .stat:last-child{border-bottom:none; padding-bottom:0;}
+    .process-grid{grid-template-columns:1fr; gap:36px;}
+    .delivery-grid{grid-template-columns:1fr; gap:32px; text-align:center;}
+    .delivery-list li{text-align:left;}
+    .about{grid-template-columns:1fr; gap:32px; text-align:center;}
+    .about-visual{order:-1;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+    .copilot-panel{right:10px; bottom:84px; width:94vw;}
+    .fab-stack{right:14px; bottom:16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg viewBox="0 0 100 100"><g fill="#E7A7BA"><ellipse cx="50" cy="30" rx="16" ry="20"/><ellipse cx="50" cy="70" rx="16" ry="20"/><ellipse cx="30" cy="50" rx="20" ry="16"/><ellipse cx="70" cy="50" rx="20" ry="16"/></g><circle cx="50" cy="50" r="12" fill="#E3A94A"/></svg>
+      Primrose dessert
+    </div>
+    <nav class="nav-links">
+      <a href="#produits">Nos produits</a>
+      <a href="#commander">Comment commander</a>
+      <a href="#livraison">Livraison</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="openCart()" aria-label="Ouvrir le panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        Panier
+        <span class="cart-count" id="cartCount" style="display:none;">0</span>
+      </button>
+      <a class="nav-wa" href="https://wa.me/2250191345584?text=Bonjour%20Primrose%20dessert%2C%20je%20souhaite%20passer%20une%20commande." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1s-.8 1-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        Commander
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <svg class="flower-float" style="top:40px; left:4%; width:64px;" viewBox="0 0 100 100"><g fill="#E7A7BA"><ellipse cx="50" cy="30" rx="16" ry="20"/><ellipse cx="50" cy="70" rx="16" ry="20"/><ellipse cx="30" cy="50" rx="20" ry="16"/><ellipse cx="70" cy="50" rx="20" ry="16"/></g><circle cx="50" cy="50" r="12" fill="#E3A94A"/></svg>
+  <svg class="flower-float" style="top:90px; right:6%; width:46px; animation-delay:2s;" viewBox="0 0 100 100"><g fill="#C96F8C"><ellipse cx="50" cy="30" rx="16" ry="20"/><ellipse cx="50" cy="70" rx="16" ry="20"/><ellipse cx="30" cy="50" rx="20" ry="16"/><ellipse cx="70" cy="50" rx="20" ry="16"/></g><circle cx="50" cy="50" r="12" fill="#E3A94A"/></svg>
+
+  <div class="hero-eyebrow">Desserts · jus · apéro, faits maison sur commande</div>
+  <h1>Des gourmandises qui sentent<br>la maison, <em>en fleurs</em></h1>
+  <p class="lede">Primrose dessert prépare biscuits, beignets, jus naturels et snacks apéritifs faits maison — à commander en quelques clics, livrés chez vous.</p>
+  <div class="hero-cta">
+    <a href="#produits" class="btn btn-primary">Découvrir le catalogue</a>
+    <a href="https://wa.me/2250191345584?text=Bonjour%20Primrose%20dessert%2C%20je%20souhaite%20passer%20une%20commande." class="btn btn-ghost" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="n">10+</div><div class="l">produits faits maison</div></div>
+    <div class="stat"><div class="n">24–48h</div><div class="l">délai de livraison</div></div>
+    <div class="stat"><div class="n">Détail &amp; gros</div><div class="l">pour particuliers et revendeurs</div></div>
+  </div>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<section class="catalog" id="produits">
+  <div class="wrap">
+    <div class="section-title">
+      <div class="eyebrow">Le catalogue</div>
+      <h2>Nos produits</h2>
+      <p>Préparés par petits lots pour rester toujours frais. Choisissez votre catégorie et votre mode d'achat.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" data-cat="all">Tout voir</button>
+      <button class="cat-tab" data-cat="desserts">Desserts</button>
+      <button class="cat-tab" data-cat="jus">Jus</button>
+      <button class="cat-tab" data-cat="apero">Apéro</button>
+    </div>
+
+    <div class="mode-bar">
+      <div class="mode-toggle">
+        <button id="btnDetail" class="active" onclick="setMode('detail')">Achat au détail</button>
+        <button id="btnGros" onclick="setMode('gros')">Achat en gros</button>
+      </div>
+      <span class="mode-hint" id="modeHint">Prix au détail — idéal pour un achat personnel.</span>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ COMMENT COMMANDER ============ -->
+<section id="commander">
+  <div class="wrap">
+    <div class="section-title">
+      <div class="eyebrow">C'est simple</div>
+      <h2>Comment commander</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <h3>Choisissez vos produits</h3>
+        <p>Ajoutez vos desserts, jus et snacks préférés au panier, en détail ou en gros.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <h3>Confirmez sur WhatsApp</h3>
+        <p>Votre commande est envoyée automatiquement, il ne reste qu'à confirmer l'adresse et l'heure.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <h3>Recevez votre livraison</h3>
+        <p>Nous préparons et livrons votre commande fraîche, sous 24 à 48h selon la zone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why-section">
+  <div class="wrap">
+    <div class="section-title">
+      <div class="eyebrow">Pourquoi Primrose</div>
+      <h2>Un service pensé pour durer</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C96F8C" stroke-width="1.6"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+        <h3>Fraîcheur garantie</h3>
+        <p>Préparé par petits lots, jamais stocké longtemps.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C96F8C" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>
+        <h3>Fait sur commande</h3>
+        <p>Chaque produit est préparé selon vos quantités.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C96F8C" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Hygiène irréprochable</h3>
+        <p>Recettes simples, ingrédients de qualité, préparation soignée.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C96F8C" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <h3>Réponse rapide</h3>
+        <p>Commande et suivi directement sur WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVRAISON ============ -->
+<section id="livraison">
+  <div class="wrap delivery-grid">
+    <div>
+      <div class="eyebrow" style="font-family:'Fraunces',serif; font-style:italic; color:var(--sage); font-size:14px; margin-bottom:10px;">Livraison</div>
+      <h2 style="font-size:32px; margin-bottom:8px;">Votre commande, livrée chez vous</h2>
+      <ul class="delivery-list">
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>Livraison disponible dans toute la zone couverte par Primrose dessert — la zone exacte et les frais vous sont confirmés sur WhatsApp.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5v5.6l4.2 2.5-.8 1.3L11 13V7z"/></svg><span>Délai moyen de 24 à 48h après confirmation de la commande.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a1 1 0 0 0 0 2h1v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h1a1 1 0 0 0 0-2zM10 4h4v2h-4z"/></svg><span>Commandes en gros acceptées pour les revendeurs, avec quantités minimum par produit.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M2 6h20v2H2zm2 4h16l-1.5 9a2 2 0 0 1-2 1.6H7.5a2 2 0 0 1-2-1.6z"/></svg><span>Paiement à la livraison ou par mobile money, à confirmer avec l'équipe lors de la commande.</span></li>
+      </ul>
+    </div>
+    <div class="delivery-visual">
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="#F3E5DC"/><path d="M60 120h60l-6 22a6 6 0 0 1-6 5H72a6 6 0 0 1-6-5z" fill="#C96F8C"/><rect x="55" y="95" width="70" height="30" rx="5" fill="#E7A7BA"/><circle cx="70" cy="150" r="9" fill="#452339"/><circle cx="110" cy="150" r="9" fill="#452339"/><path d="M40 100l15-20h60l15 20" stroke="#452339" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="apropos" style="background:var(--cream-deep);">
+  <div class="wrap about">
+    <div>
+      <h2>Fait avec soin, vendu avec confiance</h2>
+      <p>Primrose dessert est née d'une passion pour la pâtisserie et les recettes artisanales. Biscuits, beignets, yaourts, caramels, jus naturels et snacks : chaque produit est préparé à la main, avec des ingrédients simples et beaucoup d'attention.</p>
+      <p>Que vous achetiez pour vous-même ou pour revendre, nous vous garantissons fraîcheur et régularité à chaque commande.</p>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 100 100"><g fill="#E7A7BA"><ellipse cx="50" cy="26" rx="18" ry="24"/><ellipse cx="50" cy="74" rx="18" ry="24"/><ellipse cx="26" cy="50" rx="24" ry="18"/><ellipse cx="74" cy="50" rx="24" ry="18"/></g><circle cx="50" cy="50" r="14" fill="#E3A94A"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Primrose dessert</div>
+        <p>Desserts, jus et apéro artisanaux, faits maison — vendus au détail et en gros, livrés chez vous.</p>
+      </div>
+      <div>
+        <div class="col-title">Commander</div>
+        <a href="https://wa.me/2250191345584" target="_blank" rel="noopener">WhatsApp — 01 91 34 55 84</a>
+        <a href="#produits">Voir le catalogue</a>
+        <a href="#livraison">Zones de livraison</a>
+      </div>
+      <div>
+        <div class="col-title">Catégories</div>
+        <p>Desserts</p>
+        <p>Jus naturels</p>
+        <p>Apéro</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Primrose dessert — Tous droits réservés</div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Votre panier</h3>
+    <button class="cart-close" onclick="closeCart()" aria-label="Fermer le panier">×</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Mode</span><span id="cartModeLabel">Détail</span></div>
+    <div class="cart-total-row grand"><span>Total</span><span id="cartTotal">0 fr</span></div>
+    <div class="cart-gros-note" id="cartGrosNote"></div>
+    <a href="#" id="waOrderBtn" class="btn order-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1s-.8 1-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      Commander sur WhatsApp
+    </a>
+  </div>
+</aside>
+
+<!-- ============ FLOATING BUTTONS ============ -->
+<div class="fab-stack">
+  <button class="fab copilot" onclick="toggleCopilot()" aria-label="Ouvrir Primrose Copilote">
+    <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.8V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.2c1.8-1.3 3-3.4 3-5.8a7 7 0 0 0-7-7zM9 20h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/></svg>
+  </button>
+  <a class="fab wa" href="https://wa.me/2250191345584?text=Bonjour%20Primrose%20dessert%2C%20je%20souhaite%20passer%20une%20commande." target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1s-.8 1-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  </a>
+</div>
+
+<!-- ============ COPILOT PANEL ============ -->
+<div class="copilot-panel" id="copilotPanel">
+  <div class="copilot-head">
+    <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.8V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.2c1.8-1.3 3-3.4 3-5.8a7 7 0 0 0-7-7zM9 20h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/></svg>
+    <div>
+      <div class="t1">Primrose Copilote</div>
+      <div class="t2">Toujours prêt à répondre</div>
+    </div>
+    <button class="copilot-close" onclick="toggleCopilot()" aria-label="Fermer">×</button>
+  </div>
+  <div class="copilot-body" id="copilotBody"></div>
+  <div class="copilot-input-row">
+    <input type="text" id="copilotInput" placeholder="Posez votre question..." onkeydown="if(event.key==='Enter')sendCopilotMessage()">
+    <button onclick="sendCopilotMessage()" aria-label="Envoyer">
+      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ICONS
+   ============================================================ */
+const ICONS = {
+  biscuit: `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="#E4B888" stroke="#C98B4F" stroke-width="2"/><circle cx="42" cy="46" r="4" fill="#8A5A2B"/><circle cx="72" cy="40" r="4" fill="#8A5A2B"/><circle cx="82" cy="66" r="4" fill="#8A5A2B"/><circle cx="46" cy="78" r="4" fill="#8A5A2B"/><circle cx="70" cy="82" r="4" fill="#8A5A2B"/></svg>`,
+  beignet: `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="#F3D9A8" stroke="#C98B4F" stroke-width="2"/><circle cx="60" cy="60" r="17" fill="#FBF3EE"/><path d="M30 40c8 10 4 25-4 28" stroke="#fff" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/></svg>`,
+  yaourt: `<svg viewBox="0 0 120 120"><path d="M42 30h36l4 16-6 50a6 6 0 0 1-6 5H50a6 6 0 0 1-6-5l-6-50z" fill="#FBF3EE" stroke="#C98B4F" stroke-width="2"/><rect x="40" y="28" width="40" height="10" rx="2" fill="#C96F8C"/><path d="M46 60c6 6 22 6 28 0" stroke="#E7A7BA" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
+  caramel: `<svg viewBox="0 0 120 120"><rect x="30" y="42" width="60" height="36" rx="6" fill="#B97A3D"/><path d="M30 60l-14-6 6 12z" fill="#D89A55"/><path d="M90 60l14-6-6 12z" fill="#D89A55"/><rect x="30" y="42" width="60" height="36" rx="6" fill="none" stroke="#8A5A2B" stroke-width="2"/></svg>`,
+  bissap: `<svg viewBox="0 0 120 120"><path d="M42 30h36l-6 62a6 6 0 0 1-6 5H54a6 6 0 0 1-6-5z" fill="#FBF3EE" stroke="#8B9A6E" stroke-width="2"/><path d="M40 30h40" stroke="#8B9A6E" stroke-width="3"/><rect x="42" y="50" width="36" height="35" fill="#8B2E52"/><path d="M46 30c2 6 8 6 10 0M64 30c2 6 8 6 10 0" stroke="#C96F8C" stroke-width="2" fill="none"/></svg>`,
+  citron: `<svg viewBox="0 0 120 120"><path d="M42 30h36l-6 62a6 6 0 0 1-6 5H54a6 6 0 0 1-6-5z" fill="#FBF3EE" stroke="#E3A94A" stroke-width="2"/><path d="M40 30h40" stroke="#E3A94A" stroke-width="3"/><rect x="42" y="52" width="36" height="33" fill="#F3D24A"/><circle cx="56" cy="64" r="7" fill="#FBF3EE" opacity="0.8"/><circle cx="70" cy="72" r="5" fill="#FBF3EE" opacity="0.8"/></svg>`,
+  orange: `<svg viewBox="0 0 120 120"><path d="M42 30h36l-6 62a6 6 0 0 1-6 5H54a6 6 0 0 1-6-5z" fill="#FBF3EE" stroke="#E3A94A" stroke-width="2"/><path d="M40 30h40" stroke="#E3A94A" stroke-width="3"/><rect x="42" y="52" width="36" height="33" fill="#EF9A3C"/><circle cx="58" cy="66" r="8" fill="#FBF3EE" opacity="0.75"/></svg>`,
+  gazeuse: `<svg viewBox="0 0 120 120"><path d="M48 20h24l4 12-4 8v45a6 6 0 0 1-6 6H54a6 6 0 0 1-6-6V40l-4-8z" fill="#DDEDE3" stroke="#8B9A6E" stroke-width="2"/><circle cx="58" cy="55" r="2.5" fill="#8B9A6E"/><circle cx="66" cy="68" r="2" fill="#8B9A6E"/><circle cx="56" cy="78" r="2" fill="#8B9A6E"/></svg>`,
+  chips: `<svg viewBox="0 0 120 120"><path d="M32 40 Q60 20 88 40 L82 92 Q60 100 38 92 Z" fill="#F3D9A8" stroke="#C98B4F" stroke-width="2"/><path d="M40 50 Q60 62 80 50" stroke="#C98B4F" stroke-width="2" fill="none"/><path d="M40 68 Q60 80 80 68" stroke="#C98B4F" stroke-width="2" fill="none"/></svg>`,
+  chipsBanane: `<svg viewBox="0 0 120 120"><path d="M32 40 Q60 20 88 40 L82 92 Q60 100 38 92 Z" fill="#F3E5A8" stroke="#C9B84F" stroke-width="2"/><ellipse cx="52" cy="56" rx="10" ry="6" fill="#F9F1C8" stroke="#C9B84F" stroke-width="1.5"/><ellipse cx="70" cy="74" rx="10" ry="6" fill="#F9F1C8" stroke="#C9B84F" stroke-width="1.5"/></svg>`
+};
+
+/* ============================================================
+   PRODUCT DATA — ajustez les prix et descriptions librement
+   ============================================================ */
+const PRODUCTS = [
+  { id:'biscuit', cat:'desserts', name:'Biscuits Atchomon', desc:"Biscuits traditionnels dorés, croustillants à l'extérieur, moelleux à l'intérieur.", priceDetail:150, priceGros:100, grosMin:10 },
+  { id:'beignet', cat:'desserts', name:'Beignets fourrés', desc:'Beignets moelleux garnis, servis frais du jour.', priceDetail:200, priceGros:150, grosMin:10 },
+  { id:'yaourt', cat:'desserts', name:'Yaourt maison', desc:'Yaourt onctueux préparé maison, nature ou parfumé.', priceDetail:300, priceGros:250, grosMin:10 },
+  { id:'caramel', cat:'desserts', name:'Caramel mou (Toffee)', desc:'Caramel mou fondant, une touche gourmande à tout moment.', priceDetail:100, priceGros:75, grosMin:10 },
+  { id:'bissap', cat:'jus', name:'Jus de Bissap', desc:"Jus d'hibiscus naturel, préparé sans conservateurs.", priceDetail:500, priceGros:400, grosMin:6 },
+  { id:'citron', cat:'jus', name:'Jus de Citron', desc:'Citronnade fraîche et désaltérante.', priceDetail:500, priceGros:400, grosMin:6 },
+  { id:'orange', cat:'jus', name:"Jus d'Orange", desc:'Jus d\'orange 100% naturel pressé.', priceDetail:500, priceGros:400, grosMin:6 },
+  { id:'gazeuse', cat:'jus', name:'Eaux gazeuses', desc:'Sprite, Fanta et autres boissons gazeuses bien fraîches.', priceDetail:600, priceGros:500, grosMin:6 },
+  { id:'chips', cat:'apero', name:'Chips', desc:"Chips croustillantes, parfaites pour l'apéro.", priceDetail:250, priceGros:200, grosMin:10 },
+  { id:'chipsBanane', cat:'apero', name:'Chips de bananes', desc:'Chips de bananes plantain, croustillantes et légèrement sucrées.', priceDetail:250, priceGros:200, grosMin:10 },
+];
+
+const CAT_LABEL = { desserts:'Desserts', jus:'Jus', apero:'Apéro' };
+const WA_NUMBER = "2250191345584";
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let mode = 'detail'; // 'detail' | 'gros'
+let activeCat = 'all';
+let cart = {}; // id -> qty
+
+/* ============================================================
+   RENDER CATALOG
+   ============================================================ */
+function fmt(n){ return n.toLocaleString('fr-FR') + ' fr'; }
+
+function renderGrid(){
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = '';
+  const list = PRODUCTS.filter(p => activeCat === 'all' || p.cat === activeCat);
+  list.forEach(p => {
+    const price = mode === 'gros' ? p.priceGros : p.priceDetail;
+    const qty = cart[p.id] || 0;
+    const card = document.createElement('div');
+    card.className = 'p-card';
+    card.innerHTML = `
+      <div class="p-icon">${ICONS[p.id]}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-desc">${p.desc}</div>
+      <div class="p-price-row"><span class="p-price">${price}</span><span class="p-unit">fr / unité</span></div>
+      <div class="p-gros-note">${mode === 'gros' ? 'Quantité minimum recommandée : ' + p.grosMin : ''}</div>
+      <div class="p-action" id="action-${p.id}"></div>
+    `;
+    grid.appendChild(card);
+    renderCardAction(p.id, qty);
+  });
+}
+
+function renderCardAction(id, qty){
+  const el = document.getElementById('action-' + id);
+  if(!el) return;
+  if(qty > 0){
+    el.innerHTML = `
+      <div class="p-stepper">
+        <button onclick="changeCartQty('${id}', -1)" aria-label="Retirer">−</button>
+        <span class="p-qty">${qty}</span>
+        <button onclick="changeCartQty('${id}', 1)" aria-label="Ajouter">+</button>
+      </div>`;
+  } else {
+    el.innerHTML = `<button class="add-btn" onclick="changeCartQty('${id}', 1)">Ajouter</button>`;
+  }
+}
+
+function changeCartQty(id, delta){
+  const current = cart[id] || 0;
+  const next = Math.max(0, current + delta);
+  if(next === 0){ delete cart[id]; } else { cart[id] = next; }
+  renderCardAction(id, next);
+  updateCartUI();
+}
+
+function setMode(m){
+  mode = m;
+  document.getElementById('btnDetail').classList.toggle('active', m === 'detail');
+  document.getElementById('btnGros').classList.toggle('active', m === 'gros');
+  document.getElementById('modeHint').textContent = m === 'gros'
+    ? 'Prix en gros — recommandé pour les revendeurs, quantités minimum par produit.'
+    : 'Prix au détail — idéal pour un achat personnel.';
+  renderGrid();
+  updateCartUI();
+}
+
+document.getElementById('catTabs').addEventListener('click', (e) => {
+  const btn = e.target.closest('.cat-tab');
+  if(!btn) return;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  renderGrid();
+});
+
+/* ============================================================
+   CART UI
+   ============================================================ */
+function updateCartUI(){
+  const ids = Object.keys(cart);
+  const countEl = document.getElementById('cartCount');
+  const totalCount = ids.reduce((s,id) => s + cart[id], 0);
+  countEl.textContent = totalCount;
+  countEl.style.display = totalCount > 0 ? 'flex' : 'none';
+
+  const body = document.getElementById('cartBody');
+  const orderBtn = document.getElementById('waOrderBtn');
+  document.getElementById('cartModeLabel').textContent = mode === 'gros' ? 'En gros' : 'Au détail';
+
+  if(ids.length === 0){
+    body.innerHTML = `<div class="cart-empty">Votre panier est vide.<br>Ajoutez des produits depuis le catalogue.</div>`;
+    document.getElementById('cartTotal').textContent = fmt(0);
+    document.getElementById('cartGrosNote').textContent = '';
+    orderBtn.setAttribute('aria-disabled','true');
+    orderBtn.style.opacity = '0.45';
+    orderBtn.style.pointerEvents = 'none';
+    return;
+  }
+
+  orderBtn.style.opacity = '1';
+  orderBtn.style.pointerEvents = 'auto';
+
+  let total = 0;
+  let lines = [];
+  body.innerHTML = '';
+  ids.forEach(id => {
+    const p = PRODUCTS.find(pr => pr.id === id);
+    const price = mode === 'gros' ? p.priceGros : p.priceDetail;
+    const qty = cart[id];
+    const subtotal = price * qty;
+    total += subtotal;
+    lines.push(`${qty} x ${p.name} (${price} fr) = ${subtotal} fr`);
+
+    const row = document.createElement('div');
+    row.className = 'cart-item';
+    row.innerHTML = `
+      <div class="cart-item-icon">${ICONS[id]}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-price">${price} fr / unité · ${fmt(subtotal)}</div>
+      </div>
+      <div class="cart-item-stepper">
+        <button onclick="changeCartQty('${id}', -1)">−</button>
+        <span>${qty}</span>
+        <button onclick="changeCartQty('${id}', 1)">+</button>
+      </div>
+    `;
+    body.appendChild(row);
+  });
+
+  document.getElementById('cartTotal').textContent = fmt(total);
+
+  const grosWarnings = ids.filter(id => {
+    const p = PRODUCTS.find(pr => pr.id === id);
+    return mode === 'gros' && cart[id] < p.grosMin;
+  }).map(id => PRODUCTS.find(pr => pr.id === id).name);
+  document.getElementById('cartGrosNote').textContent = grosWarnings.length
+    ? `Quantité en dessous du minimum gros recommandé pour : ${grosWarnings.join(', ')}.`
+    : '';
+
+  const modeLabel = mode === 'gros' ? 'en gros' : 'au détail';
+  const message = `Bonjour Primrose dessert, je souhaite commander ${modeLabel} :\n` +
+    lines.join('\n') +
+    `\nTotal : ${total} fr\n\nMerci de me confirmer la disponibilité, le délai et l'adresse de livraison.`;
+  orderBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+
+  // sync any open catalog cards
+  ids.forEach(id => renderCardAction(id, cart[id]));
+  PRODUCTS.forEach(p => { if(!cart[p.id]) renderCardAction(p.id, 0); });
+}
+
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  if(!document.getElementById('copilotPanel').classList.contains('open')){
+    document.getElementById('overlay').classList.remove('show');
+  }
+}
+function closeAllPanels(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('copilotPanel').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+/* ============================================================
+   PRIMROSE COPILOTE — assistant client basé sur règles
+   ============================================================ */
+const COPILOT_RULES = [
+  { kw:['bonjour','salut','bonsoir','hello','coucou'], a:"Bonjour et bienvenue chez Primrose dessert ! 🌸 Je peux vous renseigner sur nos produits, les prix, la livraison ou la façon de commander. Que voulez-vous savoir ?" },
+  { kw:['prix','tarif','combien','coute','coûte'], a:"Voici nos tarifs au détail : Biscuits Atchomon 150 fr, Beignets fourrés 200 fr, Yaourt 300 fr, Caramel mou 100 fr, Jus (Bissap/Citron/Orange) 500 fr, Eaux gazeuses 600 fr, Chips et Chips de bananes 250 fr. Les prix en gros sont plus avantageux à partir de 6 à 10 unités selon le produit." },
+  { kw:['gros','revend','revendeur','grossiste'], a:"Pour un achat en gros, activez le mode « Achat en gros » sur le catalogue : les prix baissent automatiquement, avec une quantité minimum de 6 à 10 unités selon le produit. C'est idéal si vous revendez." },
+  { kw:['livraison','livrer','livre','delai','délai','zone'], a:"La livraison se fait généralement sous 24 à 48h après confirmation de votre commande. La zone exacte couverte et les frais de livraison vous sont confirmés directement sur WhatsApp." },
+  { kw:['commander','commande','acheter','panier'], a:"Pour commander : ajoutez vos produits au panier depuis le catalogue, ouvrez le panier, puis cliquez sur « Commander sur WhatsApp ». Votre commande est envoyée automatiquement, il ne reste qu'à confirmer votre adresse." },
+  { kw:['paiement','payer','mobile money','especes','espèces'], a:"Le paiement se fait à la livraison ou par mobile money, à confirmer avec l'équipe au moment de la commande sur WhatsApp." },
+  { kw:['horaire','heure','ouvert','ferme','fermé'], a:"Nous prenons les commandes toute la semaine via WhatsApp. Pour une commande urgente, précisez-le dans votre message et nous ferons de notre mieux." },
+  { kw:['ingredient','ingrédient','allerg','compos'], a:"Nos produits sont préparés avec des ingrédients simples et de qualité, sans conservateurs artificiels. Pour toute allergie ou question précise sur un produit, écrivez-nous directement sur WhatsApp." },
+  { kw:['contact','whatsapp','numero','numéro','telephone','téléphone'], a:"Vous pouvez nous contacter directement sur WhatsApp au 01 91 34 55 84 — c'est aussi le moyen le plus rapide pour finaliser une commande." },
+  { kw:['merci','super','top','cool'], a:"Avec plaisir ! N'hésitez pas si vous avez d'autres questions. 🌸" },
+];
+
+function normalize(str){
+  return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+
+function copilotReply(text){
+  const n = normalize(text);
+  for(const rule of COPILOT_RULES){
+    if(rule.kw.some(k => n.includes(normalize(k)))){
+      return rule.a;
+    }
+  }
+  return "Je n'ai pas toute l'information pour répondre précisément à cela. Pour une réponse rapide et fiable, écrivez-nous directement sur WhatsApp au 01 91 34 55 84 — l'équipe Primrose dessert vous répondra avec plaisir.";
+}
+
+function addMsg(text, who){
+  const body = document.getElementById('copilotBody');
+  const msg = document.createElement('div');
+  msg.className = 'msg ' + who;
+  msg.textContent = text;
+  body.appendChild(msg);
+  body.scrollTop = body.scrollHeight;
+}
+
+function addChips(options){
+  const body = document.getElementById('copilotBody');
+  const row = document.createElement('div');
+  row.className = 'chip-row';
+  options.forEach(opt => {
+    const chip = document.createElement('button');
+    chip.className = 'chip';
+    chip.textContent = opt;
+    chip.onclick = () => { addMsg(opt, 'user'); setTimeout(() => addMsg(copilotReply(opt), 'bot'), 250); };
+    row.appendChild(chip);
+  });
+  body.appendChild(row);
+  body.scrollTop = body.scrollHeight;
+}
+
+let copilotStarted = false;
+function toggleCopilot(){
+  const panel = document.getElementById('copilotPanel');
+  const isOpen = panel.classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show', isOpen || document.getElementById('cartDrawer').classList.contains('open'));
+  if(isOpen && !copilotStarted){
+    copilotStarted = true;
+    addMsg("Bonjour ! Je suis Primrose Copilote 🌸 Je réponds à vos questions sur nos produits, les prix, la livraison et les commandes.", 'bot');
+    addChips(['Nos prix', 'Livraison', 'Commander en gros', 'Comment commander']);
+  }
+}
+
+function sendCopilotMessage(){
+  const input = document.getElementById('copilotInput');
+  const text = input.value.trim();
+  if(!text) return;
+  addMsg(text, 'user');
+  input.value = '';
+  setTimeout(() => addMsg(copilotReply(text), 'bot'), 300);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderGrid();
+updateCartUI();
+</script>
+
+</body>
+</html>
